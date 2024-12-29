@@ -14,4 +14,4 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{secrets.DISCORD_WEBHOOK_URL}}
           GITHUB_EVENT: ${{github.event}}
       - name: Dump event payload
-        run: cat $GITHUB_EVENT_PATH
+        run: cat ${{github}}
