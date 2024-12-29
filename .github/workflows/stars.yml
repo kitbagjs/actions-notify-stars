@@ -12,6 +12,6 @@ jobs:
       - uses: kitbagjs/actions-notify-stars@main
         with:
           DISCORD_WEBHOOK_URL: ${{secrets.DISCORD_WEBHOOK_URL}}
-          GITHUB_EVENT: $GITHUB_EVENT_PATH
+          GITHUB_EVENT: ${{github.event}}
       - name: Dump event payload
         run: cat $GITHUB_EVENT_PATH
