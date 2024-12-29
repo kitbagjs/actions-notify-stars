@@ -26,7 +26,7 @@ runs:
         REQUEST_BODY='{
           "content": "🌟 Repository `${{ inputs.GITHUB_REPOSITORY }}` just got a new star!",
           "username": "${{ inputs.GITHUB_SENDER_LOGIN }}",
-          "avatar_url": "${{ inputs.GITHUB_SENDER_AVATAR_URL }}"
+          "avatar_url": "${{ inputs.GITHUB_SENDER_AVATAR_URL }}",
           "embeds": [
             {
               "url": "${{ inputs.GITHUB_SENDER_HTML_URL }}"
