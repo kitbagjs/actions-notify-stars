@@ -18,6 +18,15 @@ runs:
     - name: Send Discord Notification
       run: |
         curl -X POST -H "Content-Type: application/json" \
-        -d '{"content": "🌟 The repository `${{ inputs.REPOSITORY }}` just got a new star from `${{ inputs.ACTOR }}`!"}' \
+        -d '{
+          "content": "🌟 Repository `${{ inputs.REPOSITORY }}` just got a new star!",
+          "embeds": [{
+            "title": "New Star",
+            "description": "Repository `${{ inputs.REPOSITORY }}` received a star from `${{ inputs.ACTOR_USERNAME }}`.\n\nThe repository now has `${{ inputs.STAR_COUNT }}` total stars!",
+            "thumbnail": {
+              "url": "${{ inputs.ACTOR_AVATAR_URL }}"
+            }
+          }]
+        }' \
         "${{ inputs.DISCORD_WEBHOOK_URL }}"
       shell: bash
