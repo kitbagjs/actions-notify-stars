@@ -6,10 +6,7 @@ inputs:
   DISCORD_WEBHOOK_URL:
     required: true
 
-  REPOSITORY:
-    required: true
-
-  ACTOR:
+  GITHUB_EVENT:
     required: true
 
 runs:
@@ -19,14 +16,14 @@ runs:
       run: |
         curl -X POST -H "Content-Type: application/json" \
         -d '{
-          "content": "🌟 Repository `${{ inputs.REPOSITORY }}` just got a new star!",
-          "embeds": [{
-            "title": "New Star",
-            "description": "Repository `${{ inputs.REPOSITORY }}` received a star from `${{ inputs.ACTOR_USERNAME }}`.\n\nThe repository now has `${{ inputs.STAR_COUNT }}` total stars!",
-            "thumbnail": {
-              "url": "${{ inputs.ACTOR_AVATAR_URL }}"
+          "content": "🌟 Repository `${{ inputs.GITHUB_EVENT.repository.name }}` just got a new star!",
+          "username": "${{ inputs.GITHUB_EVENT.sender.login }}",
+          "avatar_url": "${{ inputs.GITHUB_EVENT.sender.avatar_url }}"
+          "embeds": [
+            {
+              "url": "${{ inputs.GITHUB_EVENT.sender.html_url }}"
             }
-          }]
+          ]
         }' \
         "${{ inputs.DISCORD_WEBHOOK_URL }}"
       shell: bash
