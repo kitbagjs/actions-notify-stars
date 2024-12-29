@@ -1,0 +1,10 @@
+on:
+  watch:
+    types: [started]
+
+jobs:
+  use-notify-stars:
+    uses: kitbagjs/actions-notify-stars@main
+    with:
+      repository: ${{github.repository}}
+      actor: ${{github.actor}}
