@@ -1,0 +1,17 @@
+name: Notify Discord on Star
+
+on:
+  watch:
+    types: [started]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Notification
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "🌟 The repository `${{ github.repository }}` just got a new star from `${{ github.actor }}`!"}' \
+          "$DISCORD_WEBHOOK_URL"
