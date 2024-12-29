@@ -6,7 +6,16 @@ inputs:
   DISCORD_WEBHOOK_URL:
     required: true
 
-  GITHUB_EVENT:
+  GITHUB_REPOSITORY:
+    required: true
+
+  GITHUB_SENDER_LOGIN:
+    required: true
+
+  GITHUB_SENDER_AVATAR_URL:
+    required: true
+
+  GITHUB_SENDER_HTML_URL:
     required: true
 
 runs:
@@ -15,12 +24,12 @@ runs:
     - name: Send Discord Notification
       run: |
         REQUEST_BODY='{
-          "content": "🌟 Repository `${{ inputs.GITHUB_EVENT.repository.name }}` just got a new star!",
-          "username": "${{ inputs.GITHUB_EVENT.sender.login }}",
-          "avatar_url": "${{ inputs.GITHUB_EVENT.sender.avatar_url }}"
+          "content": "🌟 Repository `${{ inputs.GITHUB_REPOSITORY }}` just got a new star!",
+          "username": "${{ inputs.GITHUB_SENDER_LOGIN }}",
+          "avatar_url": "${{ inputs.GITHUB_SENDER_AVATAR_URL }}"
           "embeds": [
             {
-              "url": "${{ inputs.GITHUB_EVENT.sender.html_url }}"
+              "url": "${{ inputs.GITHUB_SENDER_HTML_URL }}"
             }
           ]
         }'
