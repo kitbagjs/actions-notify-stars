@@ -1,4 +1,6 @@
-name: Notify Discord on Star
+
+name: actions-notify-stars
+description: Notify Discord on Star
 
 on:
   watch:
