@@ -14,8 +14,7 @@ runs:
   steps:
     - name: Send Discord Notification
       run: |
-        curl -X POST -H "Content-Type: application/json" \
-        -d '{
+        REQUEST_BODY='{
           "content": "🌟 Repository `${{ inputs.GITHUB_EVENT.repository.name }}` just got a new star!",
           "username": "${{ inputs.GITHUB_EVENT.sender.login }}",
           "avatar_url": "${{ inputs.GITHUB_EVENT.sender.avatar_url }}"
@@ -24,6 +23,11 @@ runs:
               "url": "${{ inputs.GITHUB_EVENT.sender.html_url }}"
             }
           ]
-        }' \
+        }'
+
+        echo "Request body: $REQUEST_BODY"
+
+        curl -X POST -H "Content-Type: application/json" \
+        -d "$REQUEST_BODY" \
         "${{ inputs.DISCORD_WEBHOOK_URL }}"
       shell: bash
