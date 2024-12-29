@@ -29,7 +29,9 @@ runs:
           "avatar_url": "${{ inputs.GITHUB_SENDER_AVATAR_URL }}",
           "embeds": [
             {
-              "url": "${{ inputs.GITHUB_SENDER_HTML_URL }}"
+              "title": "${{ inputs.GITHUB_SENDER_LOGIN }}",
+              "url": "${{ inputs.GITHUB_SENDER_HTML_URL }}",
+              "image": "${{ inputs.GITHUB_SENDER_AVATAR_URL }}"
             }
           ]
         }'
