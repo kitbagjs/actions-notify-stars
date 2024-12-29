@@ -5,8 +5,11 @@ on:
     types: [started]
 
 jobs:
-  use-notify-stars:
-    uses: kitbagjs/actions-notify-stars@main
-    with:
-      repository: ${{github.repository}}
-      actor: ${{github.actor}}
+  notify:
+    name: Notify Discord
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kitbagjs/actions-notify-stars@main
+        with:
+          repository: ${{github.repository}}
+          actor: ${{github.actor}}
