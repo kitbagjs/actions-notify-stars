@@ -20,3 +20,4 @@ runs:
         curl -X POST -H "Content-Type: application/json" \
         -d '{"content": "🌟 The repository `${{ inputs.REPOSITORY }}` just got a new star from `${{ inputs.ACTOR }}`!"}' \
         "${{ inputs.DISCORD_WEBHOOK_URL }}"
+      shell: bash
