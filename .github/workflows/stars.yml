@@ -11,5 +11,6 @@ jobs:
     steps:
       - uses: kitbagjs/actions-notify-stars@main
         with:
-          repository: ${{github.repository}}
-          actor: ${{github.actor}}
+          DISCORD_WEBHOOK_URL: ${{secrets.DISCORD_WEBHOOK_URL}}
+          REPOSITORY: ${{github.repository}}
+          ACTOR: ${{github.actor}}
