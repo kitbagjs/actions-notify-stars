@@ -27,7 +27,7 @@ runs:
     - name: Send Discord Notification
       run: |
         REQUEST_BODY='{
-          "content": "# 🌟 ${{ inputs.GITHUB_REPOSITORY }}\n${{ inputs.GITHUB_REPOSITORY_STARS }} total stars\n[Open GitHub Profile](${{ inputs.GITHUB_SENDER_HTML_URL }})\n",
+          "content": "# 🌟 ${{ inputs.GITHUB_REPOSITORY }}\n${{ inputs.GITHUB_REPOSITORY_STARS }} total stars for [${{ inputs.GITHUB_REPOSITORY }}](https://github.com/kitbagjs/${{ inputs.GITHUB_REPOSITORY }})\nThanks to [${{ inputs.GITHUB_SENDER_LOGIN }}](${{ inputs.GITHUB_SENDER_HTML_URL }})\n",
           "username": "${{ inputs.GITHUB_SENDER_LOGIN }}",
           "avatar_url": "${{ inputs.GITHUB_SENDER_AVATAR_URL }}"
         }'
